@@ -1,0 +1,42 @@
+//========================================================================
+// Mixins
+//========================================================================
+
+// Import variables to be used for default parameter values
+@use "variables" as *;
+
+// Displays content as Flex, centering it both horizontally and
+// vertically. Also allows user to specify flex-direction.
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin alternative for media queries. Uses breakpoint variables
+// from __variables.scss
+@mixin breakpoint($min, $max: null) {
+  @if $max {
+    @media (min-width: $min) and (max-width: ($max - 1px)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+}
+
+//
+@mixin card-theme(
+  $color: $white,
+  $font-color: $black,
+  $border-radius: $border-radius-base,
+  $padding: $space-sm
+) {
+  background-color: $color;
+  color: $font-color;
+  border-radius: $border-radius;
+  padding: $padding;
+}

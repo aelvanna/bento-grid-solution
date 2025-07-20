@@ -1,0 +1,271 @@
+//===========================================
+// Configuration
+//===========================================
+@use "variables" as *;
+@use "mixins";
+@import "_fonts.scss";
+
+html {
+  background: $grey-100;
+  font-size: $fs-base;
+  line-height: 1;
+  letter-spacing: -0.05rem;
+  // Set Fluid Font-size //
+  font-size: clamp($space-sm, 0.9rem + 1vw, $fs-base);
+  font-family: "DM Sans", sans-serif;
+  // Allow long words to break to prevent horizontal overflow
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+// Inherit box-sizing for a more intuitive layout model
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  // Reset Margins/Padding
+  margin: 0;
+  padding: 0;
+}
+
+// Font Configuration
+p {
+  font-size: $fs-base;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: $fs-h1;
+  font-weight: 500;
+  margin-bottom: $space-md;
+}
+
+h2 {
+  font-size: $fs-h2;
+  font-weight: 500;
+}
+
+figcaption {
+  font-size: $fs-figcaption;
+  font-weight: 500;
+}
+
+// Make images responsive by default
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+// Page Styling
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin-block: $space-lg;
+  margin-inline: $space-xs;
+  gap: $space-lg;
+}
+
+.testimonial-card {
+  // Use mixin for consistent card styling
+  @include mixins.card-theme($purple-500, $white);
+  text-align: center;
+  padding-inline: $space-lg;
+  padding-block: $space-xl;
+  // Prevents the figcaption from stretching the page on small screens
+  overflow-x: hidden;
+
+  .yellow-text {
+    color: $yellow-500;
+    background-color: transparent;
+  }
+
+  &__figure {
+    // Reset default browser margin
+    margin: 0;
+    @include mixins.flex-center(column);
+    gap: $space-sm;
+
+    figcaption {
+      white-space: nowrap;
+      font-weight: 200;
+      padding: $space-md;
+    }
+  }
+
+  .five-star-rating-img {
+    max-width: 70%;
+  }
+}
+
+.multiple-platform-card {
+  // The article is now the flex container
+  display: flex;
+  flex-direction: column;
+  @include mixins.card-theme($white, $black, $padding: $space-sm);
+
+  &__figure {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .multiple-accounts-img {
+    // Filter to add a very subtle shadow to helpmask
+    // the faint purple edge artifacts on the image asset.
+    filter: drop-shadow(0 2px 8px hsl(0 0% 0% / 0.15));
+    margin-bottom: $space-sm;
+  }
+
+  h2 {
+    order: 1;
+  }
+}
+
+.consistent-posting-card {
+  @include mixins.card-theme(
+    $yellow-500,
+    $black,
+    $border-radius-base,
+    $space-sm
+  );
+  // Reset padding-bottom to match design
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__figure {
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  .consistent-schedule-img {
+    max-width: 80%; // Adjust size to better match the design
+  }
+
+  h2 {
+    text-align: left;
+    margin-bottom: $space-sm;
+  }
+}
+
+.schedule-posts-card {
+  @include mixins.card-theme(
+    $purple-100,
+    $black,
+    $border-radius-base,
+    $space-sm
+  );
+  padding-top: $space-lg;
+  // Prevents the h2 from stretching the page on small screens
+  overflow: hidden;
+
+  @include mixins.flex-center(column);
+  gap: $space-sm;
+  text-align: center;
+
+  h2 {
+    white-space: nowrap;
+    margin-bottom: $space-xs;
+  }
+
+  .schedule-posts-img {
+    // Add space between the image and the caption below it
+    margin-bottom: $space-md;
+  }
+
+  figcaption {
+    // Use smaller font for descriptive text
+    font-size: $fs-base;
+    font-weight: 400;
+    max-width: 90%;
+    margin-block: $space-sm;
+    // Centers figcaption, as it is narrower than its parent container (figure).
+    // Thus, the flex-center mixin does not center this and the below is required for centering.
+    margin-inline: auto;
+  }
+}
+
+.grow-followers-card {
+  @include mixins.card-theme($purple-500, $white, $padding: $space-xl);
+  @include mixins.flex-center(column);
+  padding-block: $space-lg;
+  text-align: center;
+  gap: $space-2xl;
+
+  .grow-followers-img {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: $fs-figcaption-2xl;
+    font-weight: 500;
+    order: 1;
+  }
+}
+
+.increased-growth-card {
+  @include mixins.card-theme($white, $black, $padding: $space-md);
+  display: flex;
+
+  &__percentage {
+    font-size: $fs-h1;
+  }
+
+  .increased-growth-img {
+    max-width: 70%;
+    margin-block: $space-lg $space-xs;
+    order: 0;
+  }
+
+  figcaption {
+    font-size: $fs-figcaption;
+    font-weight: 400;
+  }
+}
+
+.faster-content-creation-card {
+  @include mixins.card-theme($yellow-100, $black, $padding: $space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .purple-text {
+    color: $purple-500;
+    font-style: italic;
+  }
+
+  h2 {
+    margin-bottom: $space-md;
+  }
+
+  figure {
+    align-self: flex-end;
+  }
+}
+
+.write-content-card {
+  @include mixins.card-theme($yellow-500, $black, $padding: $space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h2 {
+    margin-bottom: $space-md;
+  }
+}
+
+footer {
+  .attribution {
+    font-size: $fs-attribution;
+    text-align: center;
+
+    &__a {
+      color: $link-color;
+    }
+  }
+}

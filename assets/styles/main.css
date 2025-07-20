@@ -1,0 +1,253 @@
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 1000;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 1000;
+  font-style: italic;
+}
+html {
+  background: hsl(0, 3%, 93%);
+  font-size: 1.125rem;
+  line-height: 1;
+  letter-spacing: -0.05rem;
+  font-size: clamp(1rem, 0.9rem + 1vw, 1.125rem);
+  font-family: "DM Sans", sans-serif;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2.75rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+figcaption {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin-block: 2rem;
+  margin-inline: 0.5rem;
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background-color: hsl(256, 67%, 59%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  padding-inline: 2rem;
+  padding-block: 2.5rem;
+  overflow-x: hidden;
+}
+.testimonial-card .yellow-text {
+  color: hsl(39, 100%, 71%);
+  background-color: transparent;
+}
+.testimonial-card__figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial-card__figure figcaption {
+  white-space: nowrap;
+  font-weight: 200;
+  padding: 1.5rem;
+}
+.testimonial-card .five-star-rating-img {
+  max-width: 70%;
+}
+
+.multiple-platform-card {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 7%);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+.multiple-platform-card__figure {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.multiple-platform-card .multiple-accounts-img {
+  filter: drop-shadow(0 2px 8px hsla(0, 0%, 0%, 0.15));
+  margin-bottom: 1rem;
+}
+.multiple-platform-card h2 {
+  order: 1;
+}
+
+.consistent-posting-card {
+  background-color: hsl(39, 100%, 71%);
+  color: hsl(0, 0%, 7%);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.consistent-posting-card__figure {
+  margin: 0;
+  align-self: flex-start;
+}
+.consistent-posting-card .consistent-schedule-img {
+  max-width: 80%;
+}
+.consistent-posting-card h2 {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.schedule-posts-card {
+  background-color: hsl(254, 88%, 90%);
+  color: hsl(0, 0%, 7%);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  padding-top: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+.schedule-posts-card h2 {
+  white-space: nowrap;
+  margin-bottom: 0.5rem;
+}
+.schedule-posts-card .schedule-posts-img {
+  margin-bottom: 1.5rem;
+}
+.schedule-posts-card figcaption {
+  font-size: 1.125rem;
+  font-weight: 400;
+  max-width: 90%;
+  margin-block: 1rem;
+  margin-inline: auto;
+}
+
+.grow-followers-card {
+  background-color: hsl(256, 67%, 59%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 2rem;
+  text-align: center;
+  gap: 3rem;
+}
+.grow-followers-card .grow-followers-img {
+  max-width: 100%;
+}
+.grow-followers-card h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  order: 1;
+}
+
+.increased-growth-card {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 7%);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+}
+.increased-growth-card__percentage {
+  font-size: 2.75rem;
+}
+.increased-growth-card .increased-growth-img {
+  max-width: 70%;
+  margin-block: 2rem 0.5rem;
+  order: 0;
+}
+.increased-growth-card figcaption {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.faster-content-creation-card {
+  background-color: hsl(31, 66%, 93%);
+  color: hsl(0, 0%, 7%);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.faster-content-creation-card .purple-text {
+  color: hsl(256, 67%, 59%);
+  font-style: italic;
+}
+.faster-content-creation-card h2 {
+  margin-bottom: 1.5rem;
+}
+.faster-content-creation-card figure {
+  align-self: flex-end;
+}
+
+.write-content-card {
+  background-color: hsl(39, 100%, 71%);
+  color: hsl(0, 0%, 7%);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.write-content-card h2 {
+  margin-bottom: 1.5rem;
+}
+
+footer .attribution {
+  font-size: 0.688rem;
+  text-align: center;
+}
+footer .attribution__a {
+  color: hsl(228, 45%, 44%);
+}/*# sourceMappingURL=main.css.map */
