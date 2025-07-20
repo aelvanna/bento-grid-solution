@@ -65,7 +65,7 @@ img {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   margin-block: $space-lg;
-  margin-inline: $space-xs;
+  margin-inline: $space-sm;
   gap: $space-lg;
 }
 
@@ -87,12 +87,11 @@ img {
     // Reset default browser margin
     margin: 0;
     @include mixins.flex-center(column);
-    gap: $space-sm;
+    gap: $space-2xs;
 
     figcaption {
       white-space: nowrap;
       font-weight: 200;
-      padding: $space-md;
     }
   }
 
@@ -111,13 +110,13 @@ img {
     margin: 0;
     display: flex;
     justify-content: flex-end;
-  }
 
-  .multiple-accounts-img {
-    // Filter to add a very subtle shadow to helpmask
-    // the faint purple edge artifacts on the image asset.
-    filter: drop-shadow(0 2px 8px hsl(0 0% 0% / 0.15));
-    margin-bottom: $space-sm;
+    .multiple-accounts-img {
+      // Filter to add a very subtle shadow to helpmask
+      // the faint purple edge artifacts on the image asset.
+      filter: drop-shadow(0 2px 8px hsl(0 0% 0% / 0.15));
+      margin-bottom: $space-sm;
+    }
   }
 
   h2 {
@@ -137,19 +136,20 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  // Allow the image to be clipped
+  overflow: hidden;
 
   &__figure {
     margin: 0;
-    align-self: flex-start;
-  }
 
-  .consistent-schedule-img {
-    max-width: 80%; // Adjust size to better match the design
-  }
-
-  h2 {
-    text-align: left;
-    margin-bottom: $space-sm;
+    h2 {
+      text-align: left;
+    }
+    .consistent-schedule-img {
+      max-width: 80%; // Adjust size to better match the design
+      // Move the image down so it overflows the card and gets clipped
+      transform: translateY(1.3rem);
+    }
   }
 }
 
@@ -179,27 +179,21 @@ img {
   }
 
   figcaption {
-    // Use smaller font for descriptive text
     font-size: $fs-base;
     font-weight: 400;
-    max-width: 90%;
     margin-block: $space-sm;
     // Centers figcaption, as it is narrower than its parent container (figure).
     // Thus, the flex-center mixin does not center this and the below is required for centering.
-    margin-inline: auto;
+    margin-inline: $space-xs;
   }
 }
 
 .grow-followers-card {
-  @include mixins.card-theme($purple-500, $white, $padding: $space-xl);
+  @include mixins.card-theme($purple-500, $white);
   @include mixins.flex-center(column);
-  padding-block: $space-lg;
+  padding: $space-md $space-2xl;
   text-align: center;
   gap: $space-2xl;
-
-  .grow-followers-img {
-    max-width: 100%;
-  }
 
   h2 {
     font-size: $fs-figcaption-2xl;
@@ -214,6 +208,7 @@ img {
 
   &__percentage {
     font-size: $fs-h1;
+    margin-bottom: $space-sm;
   }
 
   .increased-growth-img {
@@ -244,7 +239,9 @@ img {
   }
 
   figure {
-    align-self: flex-end;
+    .faster-content-creation-img {
+      max-width: 60%;
+    }
   }
 }
 
@@ -256,6 +253,10 @@ img {
 
   h2 {
     margin-bottom: $space-md;
+  }
+
+  .write-content-img {
+    max-width: 80%;
   }
 }
 
