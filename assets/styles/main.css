@@ -10,6 +10,14 @@
   font-weight: 100 1000;
   font-style: italic;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   background: hsl(0, 3%, 93%);
   font-size: 1.125rem;
@@ -17,16 +25,10 @@ html {
   letter-spacing: -0.05rem;
   font-size: clamp(1rem, 0.9rem + 1vw, 1.125rem);
   font-family: "DM Sans", sans-serif;
-  overflow-wrap: break-word;
-  box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+body {
+  min-height: 100vh;
 }
 
 p {
@@ -39,15 +41,42 @@ h1 {
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
+@media (min-width: 1440px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
 
 h2 {
   font-size: 1.5rem;
   font-weight: 500;
 }
+@media (min-width: 1440px) {
+  h2 {
+    font-size: 2.5rem;
+    line-height: 0.9;
+  }
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+@media (min-width: 1440px) {
+  h3 {
+    font-size: 2rem;
+    line-height: 0.9;
+  }
+}
 
 figcaption {
   font-size: 1.25rem;
   font-weight: 500;
+}
+@media (min-width: 1440px) {
+  figcaption {
+    font-size: 1.5rem;
+  }
 }
 
 img {
@@ -58,12 +87,36 @@ img {
 }
 
 .container {
+  min-height: 100vh;
+  margin: 2rem 1rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  margin-block: 2rem;
-  margin-inline: 1rem;
   gap: 2rem;
+  grid-template-areas: "testimonial" "platforms" "consistency" "schedule" "followers" "growth" "faster-content" "writing";
+}
+@media (min-width: 768px) {
+  .container {
+    place-content: center;
+    grid-template-columns: 0.75fr;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+    margin: 4rem 8rem 3rem 8rem;
+    grid-template-rows: 20rem 5rem 8rem 15rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    grid-template-areas: "faster-content   testimonial   testimonial   schedule" "faster-content   platforms     consistency   schedule" "writing          platforms     consistency   schedule" "writing          growth        followers     followers";
+  }
+}
+@media (min-width: 2560px) {
+  .container {
+    margin: 0 auto;
+    place-content: center;
+    grid-template-rows: 20rem 5rem 9rem 15rem;
+  }
 }
 
 .testimonial-card {
@@ -75,6 +128,7 @@ img {
   padding-inline: 2rem;
   padding-block: 2.5rem;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .testimonial-card .yellow-text {
   color: hsl(39, 100%, 71%);
@@ -89,11 +143,26 @@ img {
   gap: 0.75rem;
 }
 .testimonial-card__figure figcaption {
-  white-space: nowrap;
   font-weight: 200;
 }
 .testimonial-card .five-star-rating-img {
   max-width: 70%;
+}
+@media (min-width: 1440px) {
+  .testimonial-card {
+    grid-area: testimonial;
+    padding-inline: 1rem;
+    padding-block: 4rem;
+  }
+  .testimonial-card h1 {
+    padding-inline: 1rem;
+  }
+  .testimonial-card__figure .five-star-rating-img {
+    max-width: 40%;
+  }
+  .testimonial-card__figure figcaption {
+    font-size: 1.5rem;
+  }
 }
 
 .multiple-platform-card {
@@ -108,13 +177,29 @@ img {
   margin: 0;
   display: flex;
   justify-content: flex-end;
+  order: -1;
 }
 .multiple-platform-card__figure .multiple-accounts-img {
   filter: drop-shadow(0 2px 8px hsla(0, 0%, 0%, 0.15));
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  max-width: 100%;
 }
-.multiple-platform-card h2 {
-  order: 1;
+@media (min-width: 1440px) {
+  .multiple-platform-card {
+    grid-area: platforms;
+    overflow: hidden;
+    padding-block: 0 1.5rem;
+    padding-inline: 1.5rem;
+    justify-content: flex-end;
+  }
+  .multiple-platform-card h3 {
+    padding-top: 0.5rem;
+    max-width: 99%;
+  }
+  .multiple-platform-card .multiple-accounts-img {
+    max-width: 150%;
+    transform: translateX(6.3rem);
+  }
 }
 
 .consistent-posting-card {
@@ -125,18 +210,29 @@ img {
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
+}
+.consistent-posting-card h2 {
+  text-align: left;
 }
 .consistent-posting-card__figure {
   margin: 0;
-}
-.consistent-posting-card__figure h2 {
-  text-align: left;
-}
-.consistent-posting-card__figure .consistent-schedule-img {
   max-width: 80%;
   transform: translateY(1.3rem);
+}
+@media (min-width: 1440px) {
+  .consistent-posting-card {
+    grid-area: consistency;
+    padding-top: 1.5rem;
+  }
+  .consistent-posting-card__figure {
+    margin: 0;
+    max-width: 110%;
+    transform: translateY(0.5rem);
+  }
+  .consistent-posting-card__figure grow-followers-img {
+    max-width: 100%;
+  }
 }
 
 .schedule-posts-card {
@@ -153,7 +249,7 @@ img {
   gap: 1rem;
   text-align: center;
 }
-.schedule-posts-card h2 {
+.schedule-posts-card h3 {
   white-space: nowrap;
   margin-bottom: 0.5rem;
 }
@@ -165,6 +261,29 @@ img {
   font-weight: 400;
   margin-block: 1rem;
   margin-inline: 0.5rem;
+}
+@media (min-width: 1440px) {
+  .schedule-posts-card {
+    grid-area: schedule;
+    padding-top: 3.5rem;
+    justify-content: flex-start;
+  }
+  .schedule-posts-card h3 {
+    white-space: normal;
+    text-align: left;
+    margin-left: 0.75rem;
+  }
+  .schedule-posts-card .schedule-posts-img {
+    margin-left: 2rem;
+    max-width: 160%;
+    transform: translateX(-1.3rem);
+  }
+  .schedule-posts-card figcaption {
+    text-align: left;
+    margin: 0;
+    padding-inline: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
 }
 
 .grow-followers-card {
@@ -185,6 +304,23 @@ img {
   font-weight: 500;
   order: 1;
 }
+@media (min-width: 1440px) {
+  .grow-followers-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-area: followers;
+    padding: 0.5rem 1.5rem;
+  }
+  .grow-followers-card h2 {
+    text-align: left;
+    font-size: 2.5rem;
+  }
+  .grow-followers-card .grow-followers-img {
+    max-width: 130%;
+  }
+}
 
 .increased-growth-card {
   background-color: hsl(0, 0%, 100%);
@@ -192,19 +328,37 @@ img {
   border-radius: 0.75rem;
   padding: 1.5rem;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.increased-growth-card__figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
 }
 .increased-growth-card__percentage {
   font-size: 2.75rem;
-  margin-bottom: 1rem;
-}
-.increased-growth-card .increased-growth-img {
-  max-width: 70%;
-  margin-block: 2rem 0.5rem;
-  order: 0;
+  font-weight: 500;
 }
 .increased-growth-card figcaption {
   font-size: 1.25rem;
   font-weight: 400;
+  margin-bottom: 1rem;
+}
+@media (min-width: 1440px) {
+  .increased-growth-card {
+    grid-area: growth;
+    justify-content: flex-start;
+  }
+  .increased-growth-card__figure,
+  .increased-growth-card .increased-growth-img {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 .faster-content-creation-card {
@@ -223,8 +377,22 @@ img {
 .faster-content-creation-card h2 {
   margin-bottom: 1.5rem;
 }
-.faster-content-creation-card figure .faster-content-creation-img {
+.faster-content-creation-card .faster-content-creation-img {
   max-width: 60%;
+}
+@media (min-width: 1440px) {
+  .faster-content-creation-card {
+    grid-area: faster-content;
+    justify-content: flex-start;
+    text-align: left;
+    padding-block: 4rem 0;
+  }
+  .faster-content-creation-card h2 {
+    margin-bottom: 1rem;
+  }
+  .faster-content-creation-card .faster-content-creation-img {
+    max-width: 100%;
+  }
 }
 
 .write-content-card {
@@ -234,13 +402,28 @@ img {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .write-content-card h2 {
   margin-bottom: 1.5rem;
 }
+.write-content-card__figure {
+  margin-top: auto;
+}
 .write-content-card .write-content-img {
   max-width: 80%;
+}
+@media (min-width: 1440px) {
+  .write-content-card {
+    grid-area: writing;
+    text-align: left;
+  }
+  .write-content-card h2 {
+    max-width: 90%;
+    margin-bottom: 2.5rem;
+  }
+  .write-content-card .write-content-img {
+    max-width: 105%;
+  }
 }
 
 footer .attribution {
@@ -249,4 +432,9 @@ footer .attribution {
 }
 footer .attribution__a {
   color: hsl(228, 45%, 44%);
+}
+@media (min-width: 1440px) {
+  footer {
+    grid-area: footer;
+  }
 }/*# sourceMappingURL=main.css.map */

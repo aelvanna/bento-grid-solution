@@ -15,13 +15,22 @@ $black: hsl(0, 0%, 7%);
 $link-color: hsl(228, 45%, 44%);
 
 // Font Size Variables
+
+// Mobile --> Tablet
 $fs-attribution: 0.688rem;
 $fs-base: 1.125rem;
 $fs-figcaption: 1.25rem;
 $fs-figcaption-xl: 1.6rem;
 $fs-figcaption-2xl: 2rem;
+$fs-h3: 1.25rem;
 $fs-h2: 1.5rem; // h3 font size  * 1.2 (minor third scale), then adjusted by eye
 $fs-h1: 2.75rem; // h2 font size  * 1.2 (minor third scale), then adjusted by eye
+
+// Desktop --> 4K
+$fs-desktop-h1: 3.5rem;
+$fs-desktop-h2: 2.5rem;
+$fs-desktop-h3: 2rem;
+$fs-desktop-figcaption: 1.5rem;
 
 // Spacing Variables
 $space-xs: 0.5rem;
@@ -31,8 +40,8 @@ $space-md: 1.5rem;
 $space-lg: 2rem;
 $space-xl: 2.5rem;
 $space-2xl: 3rem;
-$space-3xl: 4rem;
-$space-4xl: 6rem;
+$space-3xl: 3.5rem;
+$space-4xl: 4rem;
 
 // Border variables
 $border-radius-base: 0.75rem;
