@@ -28,8 +28,7 @@ $fs-h1: 2.75rem; // h2 font size  * 1.2 (minor third scale), then adjusted by ey
 
 // Desktop --> 4K
 $fs-desktop-h1: 3.5rem;
-$fs-desktop-h2: 2.5rem;
-$fs-desktop-h3: 2rem;
+$fs-desktop-h2: 2rem;
 $fs-desktop-figcaption: 1.5rem;
 
 // Spacing Variables
@@ -42,6 +41,8 @@ $space-xl: 2.5rem;
 $space-2xl: 3rem;
 $space-3xl: 3.5rem;
 $space-4xl: 4rem;
+$space-5xl: 6rem;
+$space-6xl: 7rem;
 
 // Border variables
 $border-radius-base: 0.75rem;
@@ -49,5 +50,5 @@ $border-radius-base: 0.75rem;
 // Breakpoints
 $breakpoint-mobile: 375px;
 $breakpoint-tablet: 768px;
-$breakpoint-desktop: 1440px;
+$breakpoint-laptop: 1024px;
 $breakpoint-desktop-4k: 2560px;

@@ -44,7 +44,7 @@ h1 {
   font-weight: 500;
   margin-bottom: $space-md;
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     font-size: $fs-desktop-h1;
   }
 }
@@ -53,18 +53,8 @@ h2 {
   font-size: $fs-h2;
   font-weight: 500;
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     font-size: $fs-desktop-h2;
-    line-height: 0.9;
-  }
-}
-
-h3 {
-  font-size: $fs-h3;
-  font-weight: 500;
-
-  @include mixins.breakpoint($breakpoint-desktop) {
-    font-size: $fs-desktop-h3;
     line-height: 0.9;
   }
 }
@@ -73,7 +63,7 @@ figcaption {
   font-size: $fs-figcaption;
   font-weight: 500;
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     font-size: $fs-desktop-figcaption;
   }
 }
@@ -91,7 +81,9 @@ img {
 .container {
   // Mobile: Grid
   min-height: 100vh;
-  margin: $space-lg $space-sm;
+  // Use padding for consistent side gutters and margin for vertical spacing.
+  padding-inline: $space-sm;
+  margin-block: $space-lg;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
@@ -106,17 +98,14 @@ img {
     "faster-content"
     "writing";
 
-  // 768px
-  @include mixins.breakpoint($breakpoint-tablet) {
-    place-content: center;
-    grid-template-columns: 0.75fr;
-  }
-
-  // Desktop: Grid
-  @include mixins.breakpoint($breakpoint-desktop) {
+  // Apply desktop layout starting from the laptop breakpoint
+  @include mixins.breakpoint($breakpoint-laptop) {
     max-width: 1200px;
-    margin: 4rem 8rem 3rem 8rem;
-    grid-template-rows: 20rem 5rem 8rem 15rem;
+    margin: 4rem auto 3rem;
+    // Use minmax() for robust, flexible rows
+    grid-template-rows:
+      minmax(20rem, auto) minmax(3rem, auto) minmax(5rem, auto)
+      minmax(11rem, auto);
     grid-template-columns: repeat(4, 1fr);
     gap: $space-md;
     grid-template-areas:
@@ -126,13 +115,8 @@ img {
       "writing          growth        followers     followers";
   }
 
-  // 4K 2560px Layout
   @include mixins.breakpoint($breakpoint-desktop-4k) {
-    margin: 0 auto;
     place-content: center;
-    // Increased 3rd row height to add space under write-content-card
-    // to improve visual spacing
-    grid-template-rows: 20rem 5rem 9rem 15rem;
   }
 }
 
@@ -169,16 +153,20 @@ img {
   }
 
   // Desktop Layout
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
+    display: flex;
+    flex-direction: column;
     grid-area: testimonial;
-    padding-inline: $space-sm;
-    padding-block: $space-4xl;
+    padding-block: $space-3xl;
 
     h1 {
       padding-inline: 1rem;
     }
 
     &__figure {
+      // Pushes the figure to the bottom when the card stretches
+      margin-top: auto;
+
       .five-star-rating-img {
         max-width: 40%;
       }
@@ -210,23 +198,20 @@ img {
     }
   }
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: platforms;
-    // Move the image down so it overflows the card and gets clipped
     overflow: hidden;
-    padding-block: 0 $space-md;
-    padding-inline: $space-md;
-    justify-content: flex-end;
+    padding-top: $space-md;
 
-    h3 {
-      padding-top: $space-xs;
-      // Change max-width to force content to wrap text
-      max-width: 99%;
+    h2 {
+      padding-left: $space-xs;
     }
 
     .multiple-accounts-img {
-      max-width: 150%;
-      transform: translateX(6.3rem);
+      // Nudge image to the right to create overflow effect
+      max-width: 140%;
+      transform: translateX(6rem);
+      padding-bottom: $space-lg;
     }
   }
 }
@@ -252,26 +237,22 @@ img {
 
   &__figure {
     margin: 0;
+    // Pushes the figure to the bottom of the flex container.
+    margin-top: auto;
     max-width: 80%;
-    // Move the image down so it overflows the card and gets clipped
+    // Pushes the image down so it overflows the card and gets clipped.
     transform: translateY(1.3rem);
   }
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: consistency;
     padding-top: $space-md;
+    padding-inline: $space-md;
 
     &__figure {
-      // Remove horizontal margins to align with the heading.
-      // The card's padding will create consistent spacing.
-      margin: 0;
-      max-width: 110%;
-      // Move the image down so it overflows the card and gets clipped
-      transform: translateY(0.5rem);
-
-      grow-followers-img {
-        max-width: 100%;
-      }
+      max-width: 100%;
+      // move the image down so it can clip
+      transform: translateY($space-sm);
     }
   }
 }
@@ -292,7 +273,7 @@ img {
   gap: $space-sm;
   text-align: center;
 
-  h3 {
+  h2 {
     white-space: nowrap;
     margin-bottom: $space-xs;
   }
@@ -309,12 +290,12 @@ img {
     margin-inline: $space-xs;
   }
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: schedule;
-    padding-top: $space-3xl;
+    padding-top: $space-2xl;
     justify-content: flex-start;
 
-    h3 {
+    h2 {
       white-space: normal;
       text-align: left;
       margin-left: $space-2xs;
@@ -332,6 +313,8 @@ img {
       margin: 0;
       padding-inline: $space-2xs;
       padding-bottom: $space-2xs;
+      // Reduce font size to shrink the card's total height, allowing the grid row to shrink.
+      font-size: $fs-base;
     }
   }
 }
@@ -349,10 +332,11 @@ img {
     order: 1;
   }
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     @include mixins.flex-center(row);
     grid-area: followers;
-    padding: $space-xs $space-md;
+    // Add padding to the card to create space around its content.
+    padding-left: $space-md;
 
     h2 {
       text-align: left;
@@ -386,7 +370,7 @@ img {
     margin-bottom: $space-sm;
   }
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: growth;
 
     // Override the flex-center mixin to left-align the figure
@@ -416,19 +400,23 @@ img {
     margin-bottom: $space-md;
   }
 
+  figure {
+    // Pushes the figure to the bottom of the flex container
+    margin-top: auto;
+  }
+
   .faster-content-creation-img {
     max-width: 60%;
   }
 
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: faster-content;
-    // move img to the top of the card
-    justify-content: flex-start;
     text-align: left;
-    padding-block: $space-4xl 0;
+    // Reduce excessive padding to allow the grid row to shrink closer to the design's proportions.
+    padding-block: $space-2xl 0;
 
     h2 {
-      margin-bottom: $space-sm;
+      margin-bottom: $space-xs;
     }
 
     .faster-content-creation-img {
@@ -457,13 +445,14 @@ img {
   }
 
   // Desktop Layout
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: writing;
     text-align: left;
+    padding-block: $space-md;
 
     h2 {
       max-width: 90%;
-      margin-bottom: $space-xl;
+      margin-bottom: 0;
     }
 
     .write-content-img {
@@ -484,7 +473,7 @@ footer {
   }
 
   // Desktop Layout
-  @include mixins.breakpoint($breakpoint-desktop) {
+  @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: footer;
   }
 }

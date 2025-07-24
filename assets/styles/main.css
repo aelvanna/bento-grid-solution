@@ -41,7 +41,7 @@ h1 {
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   h1 {
     font-size: 3.5rem;
   }
@@ -51,19 +51,8 @@ h2 {
   font-size: 1.5rem;
   font-weight: 500;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   h2 {
-    font-size: 2.5rem;
-    line-height: 0.9;
-  }
-}
-
-h3 {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-@media (min-width: 1440px) {
-  h3 {
     font-size: 2rem;
     line-height: 0.9;
   }
@@ -73,7 +62,7 @@ figcaption {
   font-size: 1.25rem;
   font-weight: 500;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   figcaption {
     font-size: 1.5rem;
   }
@@ -88,24 +77,19 @@ img {
 
 .container {
   min-height: 100vh;
-  margin: 2rem 1rem;
+  padding-inline: 1rem;
+  margin-block: 2rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: 2rem;
   grid-template-areas: "testimonial" "platforms" "consistency" "schedule" "followers" "growth" "faster-content" "writing";
 }
-@media (min-width: 768px) {
-  .container {
-    place-content: center;
-    grid-template-columns: 0.75fr;
-  }
-}
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .container {
     max-width: 1200px;
-    margin: 4rem 8rem 3rem 8rem;
-    grid-template-rows: 20rem 5rem 8rem 15rem;
+    margin: 4rem auto 3rem;
+    grid-template-rows: minmax(20rem, auto) minmax(3rem, auto) minmax(5rem, auto) minmax(11rem, auto);
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     grid-template-areas: "faster-content   testimonial   testimonial   schedule" "faster-content   platforms     consistency   schedule" "writing          platforms     consistency   schedule" "writing          growth        followers     followers";
@@ -113,9 +97,7 @@ img {
 }
 @media (min-width: 2560px) {
   .container {
-    margin: 0 auto;
     place-content: center;
-    grid-template-rows: 20rem 5rem 9rem 15rem;
   }
 }
 
@@ -148,14 +130,18 @@ img {
 .testimonial-card .five-star-rating-img {
   max-width: 70%;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .testimonial-card {
+    display: flex;
+    flex-direction: column;
     grid-area: testimonial;
-    padding-inline: 1rem;
-    padding-block: 4rem;
+    padding-block: 3.5rem;
   }
   .testimonial-card h1 {
     padding-inline: 1rem;
+  }
+  .testimonial-card__figure {
+    margin-top: auto;
   }
   .testimonial-card__figure .five-star-rating-img {
     max-width: 40%;
@@ -184,21 +170,19 @@ img {
   margin-bottom: 0.5rem;
   max-width: 100%;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .multiple-platform-card {
     grid-area: platforms;
     overflow: hidden;
-    padding-block: 0 1.5rem;
-    padding-inline: 1.5rem;
-    justify-content: flex-end;
+    padding-top: 1.5rem;
   }
-  .multiple-platform-card h3 {
-    padding-top: 0.5rem;
-    max-width: 99%;
+  .multiple-platform-card h2 {
+    padding-left: 0.5rem;
   }
   .multiple-platform-card .multiple-accounts-img {
-    max-width: 150%;
-    transform: translateX(6.3rem);
+    max-width: 140%;
+    transform: translateX(6rem);
+    padding-bottom: 2rem;
   }
 }
 
@@ -217,21 +201,19 @@ img {
 }
 .consistent-posting-card__figure {
   margin: 0;
+  margin-top: auto;
   max-width: 80%;
   transform: translateY(1.3rem);
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .consistent-posting-card {
     grid-area: consistency;
     padding-top: 1.5rem;
+    padding-inline: 1.5rem;
   }
   .consistent-posting-card__figure {
-    margin: 0;
-    max-width: 110%;
-    transform: translateY(0.5rem);
-  }
-  .consistent-posting-card__figure grow-followers-img {
     max-width: 100%;
+    transform: translateY(1rem);
   }
 }
 
@@ -249,7 +231,7 @@ img {
   gap: 1rem;
   text-align: center;
 }
-.schedule-posts-card h3 {
+.schedule-posts-card h2 {
   white-space: nowrap;
   margin-bottom: 0.5rem;
 }
@@ -262,13 +244,13 @@ img {
   margin-block: 1rem;
   margin-inline: 0.5rem;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .schedule-posts-card {
     grid-area: schedule;
-    padding-top: 3.5rem;
+    padding-top: 3rem;
     justify-content: flex-start;
   }
-  .schedule-posts-card h3 {
+  .schedule-posts-card h2 {
     white-space: normal;
     text-align: left;
     margin-left: 0.75rem;
@@ -283,6 +265,7 @@ img {
     margin: 0;
     padding-inline: 0.75rem;
     padding-bottom: 0.75rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -304,18 +287,18 @@ img {
   font-weight: 500;
   order: 1;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .grow-followers-card {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     grid-area: followers;
-    padding: 0.5rem 1.5rem;
+    padding-left: 1.5rem;
   }
   .grow-followers-card h2 {
     text-align: left;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .grow-followers-card .grow-followers-img {
     max-width: 130%;
@@ -349,7 +332,7 @@ img {
   font-weight: 400;
   margin-bottom: 1rem;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .increased-growth-card {
     grid-area: growth;
     justify-content: flex-start;
@@ -377,18 +360,20 @@ img {
 .faster-content-creation-card h2 {
   margin-bottom: 1.5rem;
 }
+.faster-content-creation-card figure {
+  margin-top: auto;
+}
 .faster-content-creation-card .faster-content-creation-img {
   max-width: 60%;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .faster-content-creation-card {
     grid-area: faster-content;
-    justify-content: flex-start;
     text-align: left;
-    padding-block: 4rem 0;
+    padding-block: 3rem 0;
   }
   .faster-content-creation-card h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
   .faster-content-creation-card .faster-content-creation-img {
     max-width: 100%;
@@ -412,14 +397,15 @@ img {
 .write-content-card .write-content-img {
   max-width: 80%;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .write-content-card {
     grid-area: writing;
     text-align: left;
+    padding-block: 1.5rem;
   }
   .write-content-card h2 {
     max-width: 90%;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0;
   }
   .write-content-card .write-content-img {
     max-width: 105%;
@@ -433,7 +419,7 @@ footer .attribution {
 footer .attribution__a {
   color: hsl(228, 45%, 44%);
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   footer {
     grid-area: footer;
   }
