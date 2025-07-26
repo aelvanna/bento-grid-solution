@@ -5,17 +5,22 @@
 // Import variables to be used for default parameter values
 @use "variables" as *;
 
-// Displays content as Flex, centering it both horizontally and
-// vertically. Also allows user to specify flex-direction.
-@mixin flex-center($direction: row) {
+// A helper mixin for creating flexbox containers.
+// Defaults to a centered row layout.
+// @param {string} $direction - The flex-direction (e.g., row, column).
+// @param {string} $justify - The justify-content value.
+// @param {string} $align - The align-items value.
+@mixin flexbox($direction: row, $justify: center, $align: center) {
   display: flex;
   flex-direction: $direction;
-  justify-content: center;
-  align-items: center;
+  justify-content: $justify;
+  align-items: $align;
 }
 
-// Mixin alternative for media queries. Uses breakpoint variables
-// from __variables.scss
+// Mixin alternative for media queries.
+// @param {variable} : $min --> The minimum breakpoint
+// @param {variable} : $max --> The maximum breakpoint
+// Variables defined in _variables.scss
 @mixin breakpoint($min, $max: null) {
   @if $max {
     @media (min-width: $min) and (max-width: ($max - 1px)) {
@@ -28,7 +33,11 @@
   }
 }
 
-// Themes / Styling
+// Applies a consistent theme to a card element.
+// @param {Color} $color - The background color of the card.
+// @param {Color} $font-color - The text color for the card's content.
+// @param {Length} $border-radius - The corner radius for the card.
+// @param {Length | List} $padding - The padding value(s) for the card.
 @mixin card-theme(
   $color: $white,
   $font-color: $black,
