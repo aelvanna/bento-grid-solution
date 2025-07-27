@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/bento-grid-solution-mnTUdvgpLr](https://www.frontendmentor.io/solutions/bento-grid-solution-mnTUdvgpLr)
 - Live Site URL: [https://bento-grid-solution-lf.netlify.app](https://bento-grid-solution-lf.netlify.app)
 
 ## My process
