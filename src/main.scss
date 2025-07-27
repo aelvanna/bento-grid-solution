@@ -3,7 +3,7 @@
 //===========================================
 @use "variables" as *;
 @use "mixins";
-@use "_fonts.scss";
+@use "fonts";
 
 //===========================================
 // Utility Classes
@@ -154,7 +154,7 @@ img {
     margin: 0;
     // Use flexbox to center content
     @include mixins.flexbox(column);
-    gap: $space-2xs;
+    gap: $space-xs;
 
     figcaption {
       font-weight: 200;
@@ -204,7 +204,7 @@ img {
     padding-top: $space-md;
 
     h2 {
-      padding-left: $space-xs;
+      padding-left: $space-xxs;
     }
 
     &__image {
@@ -216,7 +216,7 @@ img {
       max-width: none;
       // Nudge image to the right to create
       // overflow effect
-      transform: translateX(0.7rem);
+      transform: translateX($space-xs);
     }
   }
 }
@@ -294,7 +294,7 @@ img {
     margin-block: $space-sm;
     margin-inline: $space-xs;
   }
-  //Desktop Layout: 1024px+
+  // Desktop Layout: 1024px+
   @include mixins.breakpoint($breakpoint-laptop) {
     grid-area: schedule;
     padding-top: $space-2xl;
@@ -302,7 +302,7 @@ img {
 
     h2 {
       text-align: left;
-      margin-left: $space-2xs;
+      margin-left: $space-xs;
     }
 
     &__image {
@@ -314,7 +314,7 @@ img {
 
     figcaption {
       text-align: left;
-      padding-inline: $space-2xs;
+      padding-inline: $space-xs;
       font-size: $fs-base;
     }
   }
