@@ -18,7 +18,9 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
+  // 'clip' is deprecated, use as fallback for older browsers, so for modern browsers use clip-path
   clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border-width: 0;
 }
